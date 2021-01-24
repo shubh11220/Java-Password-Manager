@@ -7,19 +7,26 @@ import java.sql.ResultSet;
 
 
 
-public class temp {
-    public static void dbConnect() {
+public class DBConnect {
+    static Connection connection = null;
+    public static void dbOpenConnection() {
         try {
-            Connection connection = null;
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/dbTest", "postgres", "toor");
             if (connection != null) {
-                System.out.println("Connection to Database Established!");
+                System.out.println("Connection to Database Opened Successfully!");
             }
             else System.out.println("Connection failed :(");
         }
         catch (Exception e) {
 
+        }
+    }public static void dbCloseConnection() {
+        try {
+            connection.close();
+            System.out.println("Connection to Database CLOSED successfully!");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 }

@@ -1,16 +1,14 @@
 package com.passwordmanager;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class PasswordRecord {
+public class CreatePasswordRecord extends Menu {
     private String username = "", url = "", password = "";
     private int record_id = -1;
     String insertionQuery;
 
-    PasswordRecord(String username, String url, String password) {
+    CreatePasswordRecord(String username, String url, String password) {
         setPassword(password);
         setUrl(url);
         setUsername(username);
@@ -65,12 +63,12 @@ public class PasswordRecord {
     public void insertQuery() {
         this.setInsertionQuery(this.getUsername(), this.getUrl(), this.password);
         try {
-            Connection connection = null;
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/dbTest", "postgres", "toor");
+//            Connection connection = null;
+//            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/dbTest", "postgres", "toor");
             Statement insert = connection.createStatement();
             insert.execute(insertionQuery);
             System.out.println("Values inserted successfully!\n");
-            connection.close();
+//            connection.close();
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
