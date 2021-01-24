@@ -1,4 +1,4 @@
-package com.java.passwordmanager.project;
+package com.passwordmanager;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
