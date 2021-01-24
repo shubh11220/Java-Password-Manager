@@ -24,7 +24,7 @@ public class Menu extends DBConnect {
                 case "1":
                     Options.insertRecord(); break;
                 case "2":
-                    System.out.println("case 2"); break;
+                    Options.updateRecord(); break;
                 case "3":
                     System.out.println("case 3"); break;
                 case "Q": {
