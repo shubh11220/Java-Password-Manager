@@ -11,6 +11,7 @@ public class Menu extends DBConnect {
         System.out.println(Other.asciiHeader);
         DBConnect.dbOpenConnection();
         while (!quitFlag) {
+            System.out.println("__________________________________");
             System.out.println("MENU\n" +
                     "1. Add/Create New Password Record\n" +
                     "2. Update Existing Password Record\n" +

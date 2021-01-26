@@ -16,12 +16,12 @@ public class DBConnect {
             if (connection != null) {
                 System.out.println("Connection to Database Opened Successfully!");
             }
-            else System.out.println("Connection failed :(");
         }
         catch (Exception e) {
-
+            System.out.println("Connection failed :(");
         }
-    }public static void dbCloseConnection() {
+    }
+    public static void dbCloseConnection() {
         try {
             connection.close();
             System.out.println("Connection to Database CLOSED successfully!");

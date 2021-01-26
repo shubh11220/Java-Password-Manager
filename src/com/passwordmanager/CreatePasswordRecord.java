@@ -50,7 +50,7 @@ public class CreatePasswordRecord extends Menu {
         return insertionQuery;
     }
 
-    public void setInsertionQuery(String username, String url, String password) {
+    public void setInsertionQuery() {
         insertionQuery = "INSERT INTO TEST1 (fname, lname, address)" +
                 "VALUES (" +
                 "'" + getUsername() + "', "
@@ -61,7 +61,7 @@ public class CreatePasswordRecord extends Menu {
     }
 
     public void insertQuery() {
-        this.setInsertionQuery(this.getUsername(), this.getUrl(), this.password);
+        this.setInsertionQuery();
         try {
 //            Connection connection = null;
 //            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/dbTest", "postgres", "toor");
