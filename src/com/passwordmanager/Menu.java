@@ -26,7 +26,7 @@ public class Menu extends DBConnect {
                 case "2":
                     Options.updateRecord(); break;
                 case "3":
-                    System.out.println("case 3"); break;
+                    Options.getRecord();    break;
                 case "Q": {
                     DBConnect.dbCloseConnection();
                     System.out.println("Quitting...");

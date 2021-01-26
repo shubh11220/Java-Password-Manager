@@ -1,5 +1,8 @@
 package com.passwordmanager;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -111,6 +114,41 @@ public class Options extends Menu{
 
             }
 
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            System.out.println("Record with this url does not exist, or an error occurred :( \n");
+        }
+
+    }
+
+    public static void getRecord() {
+        String username, url = "", password;
+        while (url.equals("")) {
+            System.out.print("Enter URL/App to update record: ");
+            scan.nextLine();
+            url = scan.nextLine();
+            if (url.equals("")) {
+                System.out.println("This field Cannot Be Empty");
+            }
+        }
+        String query = String.format("SELECT fname, address FROM test1 WHERE lname = '%s';", url);
+        try {
+            Statement update = connection.createStatement();
+            ResultSet rs = update.executeQuery(query);
+            rs.next();
+            username = rs.getString(1);
+            password = rs.getString(2);
+            System.out.println("The following are the current details of this record");
+            System.out.println("URL/App: " + url);
+            System.out.println("Username/UserID: " + username);
+            System.out.println("Password: " + password);
+            // copies password to device clipboard for usage
+            StringSelection data = new StringSelection(password);
+            Clipboard cb = Toolkit.getDefaultToolkit().getSystemClipboard();
+            cb.setContents(data, data);
+            System.out.println("Password copied to your clipboard!");
+            scan.nextLine();
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
