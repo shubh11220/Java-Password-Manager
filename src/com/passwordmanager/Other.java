@@ -11,6 +11,5 @@ public class Other {
             "                                                                     ";
 
 
-
     static String about = "";
 }

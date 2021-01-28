@@ -74,8 +74,6 @@ public class CreatePasswordRecord extends Menu {
             throwables.printStackTrace();
             System.out.println("Error inserting values...");
         }
-
-
     }
 
 }
