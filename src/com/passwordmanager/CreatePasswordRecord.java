@@ -51,13 +51,13 @@ public class CreatePasswordRecord extends Menu {
     }
 
     public void setInsertionQuery() {
-        insertionQuery = "INSERT INTO TEST1 (fname, lname, address)" +
+        insertionQuery = "INSERT INTO PasswordRecords (username, url, passwd)" +
                 "VALUES (" +
                 "'" + getUsername() + "', "
                 + "'" + getUrl() + "', "
                 + "'" + getPassword() +"'" +
                 ");";
-//        insertionQuery = "INSERT INTO TEST1 (fname, lname, address) VALUES ('usern', 'url', 'passw');";
+//        insertionQuery = "INSERT INTO PasswordRecords (username, url, passwd) VALUES ('usern', 'url', 'passw');";
     }
 
     public void insertQuery() {

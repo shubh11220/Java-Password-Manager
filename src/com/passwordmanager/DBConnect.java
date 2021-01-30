@@ -1,18 +1,29 @@
 package com.passwordmanager;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.ResultSet;
-
+import java.sql.*;
 
 
 public class DBConnect {
     static Connection connection = null;
+
+
+    static String dbName = "Java Password Manager";
+    public static boolean dbExists = false;
+
+    static final String USER = "username";
+    static final String PASS = "password";
+
+    public static void initializeDatabase() {
+
+    }
+
+
+
+
     public static void dbOpenConnection() {
         try {
             Class.forName("org.postgresql.Driver");
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/dbTest", "postgres", "toor");
+            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/" + dbName , "postgres", "toor");
             if (connection != null) {
                 System.out.println("Connection to Database Opened Successfully!");
             }

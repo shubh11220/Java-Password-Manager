@@ -75,7 +75,7 @@ public class Options extends Menu{
                 System.out.println("This field Cannot Be Empty");
             }
         }
-        String query = String.format("SELECT fname, address FROM test1 WHERE lname = '%s';", url);
+        String query = String.format("SELECT username, passwd FROM PasswordRecords WHERE url = '%s';", url);
         try {
             Statement update = connection.createStatement();
             ResultSet rs = update.executeQuery(query);
@@ -95,13 +95,13 @@ public class Options extends Menu{
                 switch (choice) {
                     case "U":
                         username = getUsernameFromUser();
-                        query = String.format("UPDATE test1 SET fname = '%s' WHERE lname = '%s';", username, url);
+                        query = String.format("UPDATE PasswordRecords SET username = '%s' WHERE url = '%s';", username, url);
                         update.execute(query);
                         System.out.println("Username/UserID updated successfully!\n"); quitFlag = true; break;
 
                     case "P":
                         password = getPasswordFromUser();
-                        query = String.format("UPDATE test1 SET address = '%s' WHERE lname = '%s';", password, url);
+                        query = String.format("UPDATE PasswordRecords SET passwd = '%s' WHERE url = '%s';", password, url);
                         update.execute(query);
                         System.out.println("Password updated successfully!\n"); quitFlag = true; break;
 
@@ -132,7 +132,7 @@ public class Options extends Menu{
                 System.out.println("This field Cannot Be Empty");
             }
         }
-        String query = String.format("SELECT fname, address FROM test1 WHERE lname = '%s';", url);
+        String query = String.format("SELECT username, passwd FROM PasswordRecords WHERE url = '%s';", url);
         try {
             Statement update = connection.createStatement();
             ResultSet rs = update.executeQuery(query);
