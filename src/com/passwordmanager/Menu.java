@@ -16,6 +16,7 @@ public class Menu extends DBConnect {
                     "1. Add/Create New Password Record\n" +
                     "2. Update Existing Password Record\n" +
                     "3. View Password Record for a Site/App\n" +
+                    "4. Reset Master Password\n" +
                     "Q. to Quit"
             );
             String choice = "";
@@ -28,6 +29,7 @@ public class Menu extends DBConnect {
                     Options.updateRecord(); break;
                 case "3":
                     Options.getRecord();    break;
+                case "4": verifyMaster.resetMasterHash(); break;
                 case "Q": {
                     DBConnect.dbCloseConnection();
                     System.out.println("Quitting...");

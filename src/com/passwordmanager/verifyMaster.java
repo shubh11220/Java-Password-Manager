@@ -17,8 +17,21 @@ public class verifyMaster extends DBConnect{
     private static String masterHashDB = "";
     static Scanner scan = new Scanner(System.in);
 
+    static Statement stmnt;
+
+    static {
+        try {
+            stmnt = connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+
     public static void  verifyMasterPassword() {
         setMasterHashDB();
+//        System.out.println("m"+getMasterHashDB()+"m");
+//        System.out.println(masterExists());
         if (masterExists()) {
             verify();
         }
@@ -42,12 +55,14 @@ public class verifyMaster extends DBConnect{
     private static void setMasterHashDB() {
         String query = "select master from master";
         try {
-            Statement update = connection.createStatement();
-            ResultSet rs = update.executeQuery(query);
+            stmnt = connection.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
             rs.next();
             masterHashDB = rs.getString(1); }
         catch (Exception e) {
-            System.out.println("Error:(");
+//            System.out.println("Error:(");
+            System.out.println("Master Does not exist");
+            masterHashDB = "";
         }
     }
     public static String getMasterHashDB() {
@@ -55,21 +70,27 @@ public class verifyMaster extends DBConnect{
     }
 
     public static void resetMasterHash() {
-        //if master is empty
-        System.out.println("Enter Master Password you want to set: ");
-        String inputMaster = scan.nextLine();
+        String query = "DELETE FROM MASTER;"; // deletes all existing/garbage values if present in table master
+        try {
+            stmnt.execute(query);
+        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+        }
+        // now master is empty
+        System.out.println("Enter Master Password you want to set (to reset to default, just hit enter): ");
+        String inputMaster = scan.next();
         if (inputMaster.equals("")) inputMaster = defaultMaster;
-        String query = String.format("INSERT INTO MASTER VALUES ('%s');", bytesToHex(getSHA(inputMaster)));
+        query = String.format("INSERT INTO MASTER VALUES ('%s');", bytesToHex(getSHA(inputMaster)));
         try {
             Statement statement = connection.createStatement();
             statement.execute(query);
         } catch (SQLException throwables) {
-
+            System.out.println("Error resetting master :(");
         }
     }
 
     public static boolean masterExists() {
-        return !masterHashDB.equals("") || masterHashDB != null;
+        return !masterHashDB.equals("");
     }
 
 
