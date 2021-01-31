@@ -17,9 +17,6 @@ public class DBConnect {
 
     }
 
-
-
-
     public static void dbOpenConnection() {
         try {
             Class.forName("org.postgresql.Driver");

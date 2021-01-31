@@ -29,7 +29,8 @@ public class Menu extends DBConnect {
                     Options.updateRecord(); break;
                 case "3":
                     Options.getRecord();    break;
-                case "4": verifyMaster.resetMasterHash(); break;
+                case "4":
+                    verifyMaster.resetMasterHash(); break;
                 case "Q": {
                     DBConnect.dbCloseConnection();
                     System.out.println("Quitting...");
