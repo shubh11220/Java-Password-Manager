@@ -1,7 +1,7 @@
 package com.passwordmanager;
 
 
-public class Main {
+public class RunJavaPasswordManager {
     public static void main(String[] args) {
 
         DBConnect.initializeDatabase();
