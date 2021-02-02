@@ -10,10 +10,10 @@ import java.sql.Statement;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class verifyMaster extends DBConnect{
+public class verifyMaster extends DBConnect {
     static String defaultMaster = "DEFAULT_KEY";
     private static String master = defaultMaster;
-    String keystorePass = "DEFAULT_KEY";
+
     private static String masterHashDB = "";
     static Scanner scan = new Scanner(System.in);
 

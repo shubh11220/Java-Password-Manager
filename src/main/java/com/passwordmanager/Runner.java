@@ -4,10 +4,11 @@ package com.passwordmanager;
 public class Runner {
     public static void main(String[] args) {
 
-        DBConnect.initializeDatabase();
+//        DBConnect.initializeDatabase();
         DBConnect.dbOpenConnection();
-        verifyMaster.verifyMasterPassword();
-        Menu.menu();
+        verifyMaster.verifyMasterPassword(); // login system
+        Menu newMenu = new Menu();
+        newMenu.menu();
         DBConnect.dbCloseConnection();
     }
 }

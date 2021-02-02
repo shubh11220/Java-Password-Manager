@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class Menu extends DBConnect {
     static Scanner scan = new Scanner(System.in);
 
-    public static void menu() {
+    public void menu() {
+        Options options = new Options();
+
         boolean quitFlag = false;
 
         System.out.println(Other.asciiHeader);
@@ -24,11 +26,11 @@ public class Menu extends DBConnect {
             choice = scan.next();
             switch (choice) {
                 case "1":
-                    Options.insertRecord(); break;
+                    options.insertRecord(); break;
                 case "2":
-                    Options.updateRecord(); break;
+                    options.updateRecord(); break;
                 case "3":
-                    Options.getRecord();    break;
+                    options.getRecord();    break;
                 case "4":
                     verifyMaster.resetMasterHash(); break;
                 case "Q": {

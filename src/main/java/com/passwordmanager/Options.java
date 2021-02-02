@@ -8,11 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Options extends Menu{
-    private static String getUsernameFromUser() {
+    private String getUsernameFromUser() {
         String username = "";
         while (username.equals("")) {
             System.out.print("Enter Username/UserID: ");
-            username = scan.nextLine();
+            username = scan.next();
             if (username.equals("")) {
                 System.out.println("Username/UserID Cannot Be Empty");
             }
@@ -20,12 +20,11 @@ public class Options extends Menu{
         return username;
     }
 
-    private static String getURLfromUser() {
+    private String getURLfromUser() {
         String url = "";
         while (url.equals("")) {
             System.out.print("Enter Desired URL/App: ");
-            scan.nextLine();
-            url = scan.nextLine();
+            url = scan.next();
             if (url.equals("")) {
                 System.out.println("This field Cannot Be Empty");
             }
@@ -33,11 +32,11 @@ public class Options extends Menu{
         return url;
     }
 
-    private static String getPasswordFromUser() {
+    private String getPasswordFromUser() {
         String password = "";
         while (password.equals("")) {
             System.out.print("Enter Password: ");
-            password = scan.nextLine();
+            password = scan.next();
             if (password.equals("")) {
                 System.out.println("Password Cannot Be Empty");
             }
@@ -46,7 +45,7 @@ public class Options extends Menu{
     }
 
 
-    public static void insertRecord() {
+    public void insertRecord() {
         String username = "", url = "", password = "";
         CreatePasswordRecord newRecord = null;
 
@@ -65,7 +64,7 @@ public class Options extends Menu{
     }
 
 
-    public static void updateRecord() {
+    public void updateRecord() {
         String username, url = "", password;
         while (url.equals("")) {
             System.out.print("Enter URL/App to update record: ");
@@ -122,10 +121,10 @@ public class Options extends Menu{
 
     }
 
-    public static void getRecord() {
+    public void getRecord() {
         String username, url = "", password;
         while (url.equals("")) {
-            System.out.print("Enter URL/App to update record: ");
+            System.out.print("Enter URL/App to view record: ");
             scan.nextLine();
             url = scan.nextLine();
             if (url.equals("")) {
@@ -151,7 +150,7 @@ public class Options extends Menu{
             scan.nextLine();
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+//            throwables.printStackTrace();
             System.out.println("Record with this url does not exist, or an error occurred :( \n");
         }
 

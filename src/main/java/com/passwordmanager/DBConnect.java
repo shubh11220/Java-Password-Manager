@@ -5,17 +5,15 @@ import java.sql.*;
 
 public class DBConnect {
     static Connection connection = null;
-
-
     static String dbName = "Java Password Manager";
     public static boolean dbExists = false;
 
     static final String USER = "username";
     static final String PASS = "password";
 
-    public static void initializeDatabase() {
-
-    }
+//    public static void initializeDatabase() {
+//
+//    }
 
     public static void dbOpenConnection() {
         try {
@@ -33,7 +31,8 @@ public class DBConnect {
         try {
             connection.close();
             System.out.println("Connection to Database CLOSED successfully!");
-        } catch (SQLException throwables) {
+        }
+        catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
